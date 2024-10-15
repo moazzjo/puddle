@@ -1,0 +1,49 @@
+{% extends "core/base.html" %}
+
+{% block title %}Log in{% endblock title %}
+
+
+
+{% block content %}
+
+
+    <div class='w-1/2 my-6 mx-auto p-5 bg-gray-200 rounded-xl' >
+        <h1 class= 'mb-6 text-3xl mx-auto p-6'>Log in</h1>
+
+        <form action="." method="post">
+            {% csrf_token %}
+            
+
+            <div class='mb-3 p-3'>
+                <label class='inline-block mb-2'>Username</label><br>
+                {{ form.username}}
+            </div>
+
+            <div class='mb-3 p-3'>
+                <label class='inline-block mb-2'>password</label><br>
+                {{ form.password}}
+            </div>
+
+            {% if form.errors or form.non_fields_errors %}
+                <div class= 'mb-3 p-6 bg-red-100 rounded-xl'>
+                {% if form  %}
+                     {{form.errors}}
+                {% endif %}
+                    {{form.non_field_errors}}
+                </div>
+            {% endif %}
+
+
+            <button class="mt-6 py-4 px-8 text-lg  bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
+        </form>
+
+    </div>
+
+
+
+
+
+
+
+
+{% endblock content %}
